@@ -1,0 +1,2 @@
+//! Configuração
+pub mod manager;
