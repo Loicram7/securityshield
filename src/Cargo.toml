@@ -1,0 +1,126 @@
+[package]
+name = "securityshield"
+version = "1.0.0"
+edition = "2021"
+authors = ["Seu Nome <seu@email.com>"]
+description = "Ferramenta de segurança defensiva open-source"
+license = "GPL-3.0-only"
+repository = "https://github.com/seu-usuario/securityshield"
+readme = "README.md"
+keywords = ["security", "antivirus", "malware", "privacy"]
+categories = ["command-line-utilities", "network-programming"]
+
+[lib]
+name = "securityshield"
+path = "src/lib.rs"
+
+[[bin]]
+name = "securityshield"
+path = "src/bin/main.rs"
+
+[dependencies]
+# ===== ASYNC RUNTIME =====
+tokio = { version = "1.35", features = ["full"] }
+# Explicação: Runtime assíncrono para operações concorrentes
+# "full": Todas as features (filesystem, network, time, etc)
+
+# ===== HTTP CLIENT (para VirusTotal API) =====
+reqwest = { version = "0.11", features = ["json"] }
+base64 = "0.21"
+# Explicação: Cliente HTTP assíncrono
+# "json": Suporte a serialização JSON
+
+# ===== SERIALIZAÇÃO =====
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# Explicação: Serializar/deserializar dados (JSON, structs)
+
+# ===== CRIPTOGRAFIA =====
+sha2 = "0.10"        # SHA256 hashing
+md5 = "0.8"          # MD5 hashing (para compatibilidade)
+bcrypt = "0.15"      # Hashing de senhas
+aes-gcm = "0.10"     # Criptografia AES-GCM
+rand = "0.8"         # Geração de números aleatórios
+# Explicação: Biblioteca de criptografia moderna e segura
+
+# ===== BANCO DE DADOS =====
+rusqlite = { version = "0.30", features = ["bundled"] }
+# Explicação: SQLite embutido em Rust
+# "bundled": Compila SQLite dentro do binário
+
+# ===== MONITORAMENTO DE SISTEMA =====
+sysinfo = "0.30"     # Informações de processos, CPU, memória
+# Explicação: Acesso cross-platform a informações do sistema
+
+# ===== ANÁLISE DE REDE =====
+pcap = "1.1"         # Captura de pacotes (libpcap wrapper)
+pnet = "0.34"        # Manipulação de pacotes de rede
+# Explicação: Análise de tráfego de rede em baixo nível
+
+# ===== SISTEMA DE ARQUIVOS =====
+walkdir = "2.4"      # Iterar diretórios recursivamente
+notify = "6.1"       # Monitorar mudanças em arquivos
+# Explicação: Scan de diretórios e monitoramento em tempo real
+
+# ===== LOGGING =====
+log = "0.4"          # Interface de logging
+env_logger = "0.11"  # Logger configurável via variável de ambiente
+# Explicação: Sistema de logs estruturado
+
+# ===== CONFIGURAÇÃO =====
+config = "0.13"      # Gerenciamento de configurações
+toml = "0.8"         # Parser de TOML
+# Explicação: Carregar configurações de arquivos
+
+# ===== CLI (Interface de linha de comando) =====
+clap = { version = "4.4", features = ["derive"] }
+# Explicação: Parsing de argumentos de linha de comando
+
+# ===== DATAS E TEMPO =====
+chrono = { version = "0.4", features = ["serde"] }       # Manipulação de datas
+# Explicação: Timestamps, formatação de datas
+
+# ===== ERROS =====
+thiserror = "1.0"    # Macros para definir erros customizados
+anyhow = "1.0"       # Tratamento de erros genérico
+# Explicação: Gerenciamento robusto de erros
+
+# ===== IPC (Comunicação com Flutter UI) =====
+tonic = "0.10"       # gRPC framework
+prost = "0.12"       # Protocol Buffers
+# Explicação: Comunicação eficiente com a UI Flutter
+
+# ===== UTILITÁRIOS =====
+uuid = { version = "1.6", features = ["v4"] }  # Geração de UUIDs
+lazy_static = "1.4"  # Variáveis estáticas lazy-initialized
+regex = "1.10"       # Expressões regulares
+
+[build-dependencies]
+tonic-build = "0.10"  # Compilar arquivos .proto
+
+[dev-dependencies]
+# ===== TESTES =====
+mockall = "0.12"     # Mocking para testes
+criterion = "0.5"    # Benchmarking
+
+[profile.release]
+opt-level = 3        # Máxima otimização
+lto = true           # Link-Time Optimization
+codegen-units = 1    # Otimização agressiva
+strip = true         # Remover símbolos de debug (binário menor)
+
+[[example]]
+name = "test_scanner"
+path = "examples/test_scanner.rs"
+
+[[example]]
+name = "test_keylogger"
+path = "examples/test_keylogger.rs"
+
+[[example]]
+name = "test_wifi"
+path = "examples/test_wifi.rs"
+
+[[example]]
+name = "test_ai"
+path = "examples/test_ai.rs"

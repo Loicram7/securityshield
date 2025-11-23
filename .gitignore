@@ -1,0 +1,36 @@
+# Binários e builds
+releases/
+build/
+target/
+*.apk
+*.deb
+*.so
+*.a
+
+# Flutter/Dart
+ui/build/
+ui/.dart_tool/
+ui/.flutter-plugins
+ui/.flutter-plugins-dependencies
+ui/.packages
+
+# Rust
+src/target/
+Cargo.lock
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
