@@ -36,3 +36,4 @@ vi/
 # OS
 .DS_Store
 Thumbs.db
+ui/linux/flutter/ephemeral/
