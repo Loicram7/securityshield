@@ -16,6 +16,7 @@ ui/.packages
 
 # Rust
 src/target/
+**/target/
 Cargo.lock
 
 # Python
@@ -30,6 +31,7 @@ venv/
 *.swp
 *.swo
 *~
+vi/
 
 # OS
 .DS_Store

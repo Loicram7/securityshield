@@ -1,0 +1,1 @@
+ /home/marcio/projects/securityshield/ui/.dart_tool/flutter_build/4dfa57bcda019955f9da8de33a4a345d/native_assets.json: 

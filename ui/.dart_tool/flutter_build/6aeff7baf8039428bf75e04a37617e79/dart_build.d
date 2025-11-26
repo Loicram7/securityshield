@@ -1,0 +1,1 @@
+ /home/marcio/projects/securityshield/ui/.dart_tool/flutter_build/6aeff7baf8039428bf75e04a37617e79/dart_build_result.json: 

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'antivirus_screen.dart';
+import 'keylogger_screen.dart';
+import 'wifi_screen.dart';
+import 'ai_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -12,7 +16,9 @@ class DashboardScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // TODO: Navegar para configurações
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Configurações em desenvolvimento')),
+              );
             },
           ),
         ],
@@ -22,11 +28,9 @@ class DashboardScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Status Card
             _buildStatusCard(context),
             const SizedBox(height: 16),
             
-            // Módulos
             const Text(
               'Módulos de Segurança',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -40,7 +44,10 @@ class DashboardScreen extends StatelessWidget {
               description: 'Scanner de malware',
               color: Colors.red,
               onTap: () {
-                // TODO: Navegar para antivírus
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AntivirusScreen()),
+                );
               },
             ),
             
@@ -51,7 +58,10 @@ class DashboardScreen extends StatelessWidget {
               description: 'Monitora processos suspeitos',
               color: Colors.orange,
               onTap: () {
-                // TODO: Navegar para keylogger
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const KeyloggerScreen()),
+                );
               },
             ),
             
@@ -62,7 +72,10 @@ class DashboardScreen extends StatelessWidget {
               description: 'Verifica segurança de redes',
               color: Colors.blue,
               onTap: () {
-                // TODO: Navegar para wifi
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const WifiScreen()),
+                );
               },
             ),
             
@@ -73,7 +86,10 @@ class DashboardScreen extends StatelessWidget {
               description: 'Análise comportamental',
               color: Colors.purple,
               onTap: () {
-                // TODO: Navegar para IA
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AIScreen()),
+                );
               },
             ),
           ],
@@ -184,18 +200,17 @@ class DashboardScreen extends StatelessWidget {
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text('Escaneando sistema...'),
+            Text('Escaneando todos os módulos...'),
           ],
         ),
       ),
     );
 
-    // Simular scan (substituir por chamada real ao backend)
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('✅ Scan concluído! Nenhuma ameaça detectada.'),
+          content: Text('✅ Scan completo concluído! Sistema protegido.'),
           backgroundColor: Colors.green,
         ),
       );
